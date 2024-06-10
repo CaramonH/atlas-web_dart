@@ -1,0 +1,1 @@
+// function longestUniqueSubstring() that accepts one argument String and returns the longest non-repeating substring.

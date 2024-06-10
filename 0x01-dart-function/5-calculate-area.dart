@@ -1,0 +1,1 @@
+//function calculateArea() that accepts two variables height and base and returns the area of the triangle.

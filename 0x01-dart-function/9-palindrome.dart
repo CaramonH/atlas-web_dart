@@ -1,0 +1,1 @@
+//function isPalindrome() that accepts one argument String and returns True if the input String is a palindrome otherwise it returns False

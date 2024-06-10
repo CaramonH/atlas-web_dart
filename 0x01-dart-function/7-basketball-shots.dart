@@ -1,0 +1,2 @@
+//Given two maps that represents the number of successful shots for each shot type in a basketball game between team A and Team B.
+//function whoWins() that calculates the total number of points for each team and return the winning team

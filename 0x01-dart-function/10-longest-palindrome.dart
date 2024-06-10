@@ -1,0 +1,1 @@
+//function longestPalindrome() that accepts one argument String and returns the longest palindrome substring.
