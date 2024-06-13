@@ -1,17 +1,13 @@
 class Password {
-  String password;
+  String password = '';
 
-  Password({required this.password});
-
-  bool isvalid() {
-    if (password.length < 8 || password.length > 16) {
-      return false;
-    }
+  bool isValid() {
+    bool lengthCheck = password.length >= 8 && password.length <= 16;
     bool hasUpperCase = password.contains(RegExp(r'[A-Z]'));
     bool hasLowerCase = password.contains(RegExp(r'[a-z]'));
     bool hasDigits = password.contains(RegExp(r'[0-9]'));
 
-    return hasUpperCase && hasLowerCase && hasDigits;
+    return lengthCheck && hasUpperCase && hasLowerCase && hasDigits;
   }
 
   @override
