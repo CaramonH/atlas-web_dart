@@ -11,21 +11,12 @@ Future<String> calculateTotal() async {
 
     // Get user orders
     var userOrders = await fetchUserOrders(userId);
-    if (userOrders == null) {
-      return '-1';
-    }
     List<dynamic> orders = convert.jsonDecode(userOrders);
 
-    // Fetch all product prices concurrently
-    List<Future<String>> priceFutures = orders.map((item) => fetchProductPrice(item)).toList();
-    List<String> priceStrings = await Future.wait(priceFutures);
-
-    // Calculate total price
-    for (String priceString in priceStrings) {
-      if (priceString == null) {
-        return '-1';
-      }
-      double itemPrice = convert.jsonDecode(priceString);
+    // Iterate over each item in the orders and get its price
+    for (var item in orders) {
+      var itemPriceString = await fetchProductPrice(item);
+      var itemPrice = convert.jsonDecode(itemPriceString);
       totalPrice += itemPrice;
     }
 
@@ -33,8 +24,4 @@ Future<String> calculateTotal() async {
   } catch (e) {
     return '-1';
   }
-}
-
-void main() async {
-  print(await calculateTotal());
 }
