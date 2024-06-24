@@ -1,10 +1,28 @@
-class User {
-  String name;
-  int age;
-  double height;
-  int id;
+import '6-password.dart';
 
-  User({required this.name, required this.age, required this.height, required this.id});
+class User extends Password {
+  int? id;
+  String? name;
+  int? age;
+  double? height;
+
+  User(
+      {required this.id,
+      required this.name,
+      required this.age,
+      required this.height,
+      required String user_password})
+      : super(password: user_password);
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'] ?? 0,
+      name: json['name'] ?? '',
+      age: json['age'] ?? 0,
+      height: json['height'] ?? 0.0,
+      user_password: json['user_password'] ?? '',
+    );
+  }
 
   Map<String, dynamic> toJson() {
     return {
@@ -15,17 +33,12 @@ class User {
     };
   }
 
-  static User fromJson(Map<dynamic, dynamic> userJson) {
-    return User(
-      id: userJson['id'],
-      name: userJson['name'],
-      age: userJson['age'],
-      height: userJson['height'],
-    );
-  }
-
   @override
   String toString() {
-    return 'User(id : $id ,name: $name, age: $age, height: $height)';
+    return 'User(id: $id, name: $name, age: $age, height: $height, ${super.toString()})';
+  }
+
+  set user_password(String value) {
+    _password = value;
   }
 }
